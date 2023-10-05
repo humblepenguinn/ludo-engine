@@ -2,9 +2,6 @@ from engine import Game
 
 from engine.move import MoveForward, UnlockPiece
 
-piece_one = 0
-piece_two = 0
-
 '''
 A very very very simple AI.
 '''
@@ -21,21 +18,9 @@ def ai1(dice, pieces, board, safe_spots):
   return None
 
 
-
-# def ai2(dice, pieces, board, safe_spots):
-#   global piece_two
-
-#   piece_two += 1
-
-#   if piece_two == 5:
-#     piece_two = 1
-
-#   return piece_two
-
-
 if __name__ == "__main__":
   num_players = 1
-  ais = [ai1]
+  ais = [ai1] # the engine will run the ai for the player, with respect to its position in the list. So the first element (ai) will be run for the first player. 
 
   game = Game(num_players, ais)
   game.main()

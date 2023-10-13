@@ -3,6 +3,7 @@ from random import randint
 from .player import Player
 from .move import Move, handle_move
 
+
 class Game:
     def __init__(self, num_players, ais):
         self.num_players = num_players
@@ -35,7 +36,7 @@ class Game:
 
         try:
             moves = player.ai(dice, player.pieces,
-                                  self.board, self.safe_spots)
+                              self.board, self.safe_spots)
         except Exception as e:
             print(
                 f"Error while running {player.name}'s AI. Skipping turn. Here are the details of the exception: {e}\n"
@@ -43,7 +44,8 @@ class Game:
             return
 
         if moves == None:
-            return # Skip turn
+            print(f"{player.name} skipped their turn.\n")
+            return  # Skip turn
 
         if len(moves) > 2:
             print(f"Invalid number of moves: {moves}\n")
@@ -56,7 +58,8 @@ class Game:
                 print(f"Invalid move: {move} ({reason})\n")
                 return
 
-            handle_move(move, player, dice, self.safe_spots)
+
+            handle_move(move, player, self.safe_spots)
 
         self.update_board(player)
 
